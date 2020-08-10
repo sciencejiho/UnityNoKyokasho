@@ -18,10 +18,14 @@ public class RouletteController : MonoBehaviour
         // Receive mouse click to manage the rotation speed
         if(Input.GetMouseButtonDown(0))
         {
-            this.rotSpeed = 10;
+            this.rotSpeed = 100;
         }
 
     // Rotate the roulette based on the rotation speed
     transform.Rotate(0, 0, this.rotSpeed);
+
+    // Decrease the speed of the roulette
+    this.rotSpeed *= 0.96f;
+
     }
 }
