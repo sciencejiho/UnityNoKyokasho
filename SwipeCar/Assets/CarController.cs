@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     float speed = 0;
+    Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +16,17 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // find the coordinate where mouse button was pressed
         if(Input.GetMouseButtonDown(0))
         {
-            this.speed = 0.2f;
+            this.startPos = Input.mousePosition;
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            // find the coordinate where mouse button was released
+            Vector2 endPos = Input.mousePosition;
+            float swipeLength = (endPos.x - this.startPos.x);
+            this.speed = swipeLength / 500.0f;
         }
 
         transform.Translate(this.speed, 0, 0);
