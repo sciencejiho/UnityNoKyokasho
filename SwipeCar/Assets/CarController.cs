@@ -26,7 +26,12 @@ public class CarController : MonoBehaviour
             // find the coordinate where mouse button was released
             Vector2 endPos = Input.mousePosition;
             float swipeLength = (endPos.x - this.startPos.x);
+            
+            // use the length of swipe to calculate the speed
             this.speed = swipeLength / 500.0f;
+
+            // play the sound effect
+            GetComponent<AudioSource>().Play();
         }
 
         transform.Translate(this.speed, 0, 0);
